@@ -6,6 +6,8 @@ use Filament\Schemas\Schema;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use App\Models\Skill;
 
 class PortfolioForm
 {
@@ -23,6 +25,14 @@ class PortfolioForm
                     ->columnSpanFull(),
                 TextInput::make('url')
                     ->url(),
+                Select::make('skill_ids')
+                    ->multiple()
+                    ->options(Skill::all()->pluck('name', 'id'))
+                    ->preload()
+                    ->searchable()
+                    ->columnSpanFull(),
+
+                
             ]);
     }
 }
