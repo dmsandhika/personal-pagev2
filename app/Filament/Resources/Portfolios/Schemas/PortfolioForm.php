@@ -21,9 +21,14 @@ class PortfolioForm
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->image()
-                    ->directory('portfolio-images') 
+                    ->disk('public')
+                    ->directory('portfolio-images')
                     ->columnSpanFull(),
-                TextInput::make('url')
+                TextInput::make('url_demo')
+                    ->label('Demo URL')
+                    ->url(),
+                TextInput::make('url_github')
+                    ->label('GitHub URL')
                     ->url(),
                 Select::make('skill_ids')
                     ->multiple()
@@ -32,7 +37,7 @@ class PortfolioForm
                     ->searchable()
                     ->columnSpanFull(),
 
-                
+
             ]);
     }
 }

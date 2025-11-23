@@ -1,37 +1,9 @@
-import Image from '@/assets/default.jpg';
 import { Button } from '@/components/ui/button';
+import { usePage } from '@inertiajs/react';
 import { Code2, ExternalLink, Github } from 'lucide-react';
 
 const Portfolio = () => {
-    const projects = [
-        {
-            title: 'Creative Portfolio Site',
-            description:
-                'Modern portfolio website with smooth animations, parallax effects, and interactive project showcases. Built to explore advanced CSS techniques.',
-            tags: ['React', 'Framer Motion', 'GSAP'],
-            image: Image,
-            github: 'https://github.com',
-            demo: 'https://demo.com',
-        },
-        {
-            title: 'Task Management App',
-            description:
-                'Full-featured kanban board application with drag-and-drop, real-time collaboration, and team workspace management capabilities.',
-            tags: ['React', 'Firebase', 'DnD Kit'],
-            image: Image,
-            github: 'https://github.com',
-            demo: 'https://demo.com',
-        },
-        {
-            title: 'Weather Dashboard',
-            description:
-                'Beautiful weather application with detailed forecasts, interactive maps, air quality index, and location-based weather alerts.',
-            tags: ['React', 'TypeScript', 'OpenWeather API'],
-            image: Image,
-            github: 'https://github.com',
-            demo: 'https://demo.com',
-        },
-    ];
+    const { portfolios } = usePage().props;
 
     return (
         <section id="portfolio" className="py-20">
@@ -50,14 +22,14 @@ const Portfolio = () => {
                     </div>
 
                     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-                        {projects.map((project, index) => (
+                        {portfolios.map((project, index) => (
                             <div
                                 key={index}
                                 className="group bg-card border-border hover:border-primary/50 shadow-card hover:shadow-glow overflow-hidden rounded-lg border transition-all duration-300"
                             >
                                 <div className="relative h-48 overflow-hidden">
                                     <img
-                                        src={project.image}
+                                        src={`/storage/${project.image}`}
                                         alt={project.title}
                                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     />
@@ -69,7 +41,7 @@ const Portfolio = () => {
                                     <p className="text-muted-foreground mb-4 line-clamp-3 text-sm">{project.description}</p>
 
                                     <div className="mb-4 flex flex-wrap gap-2">
-                                        {project.tags.map((tag, tagIndex) => (
+                                        {project.skills.map((tag, tagIndex) => (
                                             <span key={tagIndex} className="bg-primary/10 text-primary rounded px-2 py-1 text-xs font-medium">
                                                 {tag}
                                             </span>
@@ -78,13 +50,13 @@ const Portfolio = () => {
 
                                     <div className="flex gap-2">
                                         <Button variant="outline" size="sm" className="flex-1 gap-2" asChild>
-                                            <a href={project.github} target="_blank" rel="noopener noreferrer">
+                                            <a href={project.url_github} target="_blank" rel="noopener noreferrer">
                                                 <Github className="h-4 w-4" />
                                                 Code
                                             </a>
                                         </Button>
                                         <Button size="sm" className="flex-1 gap-2" asChild>
-                                            <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                                            <a href={project.url_demo} target="_blank" rel="noopener noreferrer">
                                                 <ExternalLink className="h-4 w-4" />
                                                 Demo
                                             </a>

@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('image')->nullable();
             $table->string('url')->nullable();
             $table->json('skill_ids')->nullable();
+            $table->string('year')->nullable();
+            $table->string('client')->nullable();
             $table->timestamps();
         });
     }

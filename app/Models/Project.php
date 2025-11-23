@@ -14,5 +14,19 @@ class Project extends Model
         'image',
         'url',
         'skill_ids',
+        'year',
+        'client',
     ];
+
+    protected $casts = [
+        'skill_ids' => 'array',
+    ];
+
+    protected $appends = ['skills'];
+    public function getSkillsAttribute()
+    {
+        return Skill::whereIn('id', $this->skill_ids ?? [])
+            ->pluck('name')
+            ->toArray();
+    }
 }

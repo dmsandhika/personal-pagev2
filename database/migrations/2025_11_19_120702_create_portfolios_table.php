@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->text('image')->nullable();
-            $table->string('url')->nullable();
+            $table->string('url_demo')->nullable();
+            $table->string('url_github')->nullable();
+            $table->json('skill_ids')->nullable();
             $table->timestamps();
         });
     }

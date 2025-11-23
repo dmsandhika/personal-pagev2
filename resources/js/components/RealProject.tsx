@@ -1,37 +1,9 @@
-import Image from '@/assets/default.jpg';
 import { Button } from '@/components/ui/button';
+import { usePage } from '@inertiajs/react';
 import { Building2, ExternalLink } from 'lucide-react';
 
 const RealProjects = () => {
-    const projects = [
-        {
-            title: 'E-Commerce Platform',
-            client: 'TechMart Inc.',
-            description: 'Complete e-commerce solution with payment gateway integration, inventory management, and real-time order tracking system.',
-            tags: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-            image: Image,
-            demo: 'https://demo.com',
-            year: '2024',
-        },
-        {
-            title: 'Corporate Website',
-            client: 'Business Solutions Ltd.',
-            description: 'Professional corporate website with CMS integration, multi-language support, and SEO optimization for international reach.',
-            tags: ['Next.js', 'TypeScript', 'Sanity CMS'],
-            image: Image,
-            demo: 'https://demo.com',
-            year: '2023',
-        },
-        {
-            title: 'Restaurant Booking System',
-            client: 'Gourmet Restaurant',
-            description: 'Online reservation platform with table management, menu display, and automated booking confirmation system.',
-            tags: ['React', 'Firebase', 'Tailwind'],
-            image: Image,
-            demo: 'https://demo.com',
-            year: '2023',
-        },
-    ];
+    const { projects } = usePage().props;
 
     return (
         <section id="real-projects" className="bg-secondary/30 py-20">
@@ -55,7 +27,7 @@ const RealProjects = () => {
                             >
                                 <div className="relative h-48 overflow-hidden">
                                     <img
-                                        src={project.image}
+                                        src={`/storage/${project.image}`}
                                         alt={project.title}
                                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     />
@@ -73,7 +45,7 @@ const RealProjects = () => {
                                     <p className="text-muted-foreground mb-4 line-clamp-3 text-sm">{project.description}</p>
 
                                     <div className="mb-4 flex flex-wrap gap-2">
-                                        {project.tags.map((tag, tagIndex) => (
+                                        {project.skills.map((tag, tagIndex) => (
                                             <span key={tagIndex} className="bg-primary/10 text-primary rounded px-2 py-1 text-xs font-medium">
                                                 {tag}
                                             </span>
@@ -81,7 +53,7 @@ const RealProjects = () => {
                                     </div>
 
                                     <Button variant="outline" size="sm" className="w-full gap-2" asChild>
-                                        <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                                        <a href={project.url} target="_blank" rel="noopener noreferrer">
                                             <ExternalLink className="h-4 w-4" />
                                             View Project
                                         </a>
