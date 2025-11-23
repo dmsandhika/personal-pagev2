@@ -4,6 +4,150 @@
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans:
+        'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+@layer base {
+    :root {
+        --background: 220 25% 10%;
+        --foreground: 210 40% 98%;
+
+        --card: 220 20% 14%;
+        --card-foreground: 210 40% 98%;
+
+        --popover: 220 20% 14%;
+        --popover-foreground: 210 40% 98%;
+
+        --primary: 195 100% 50%;
+        --primary-foreground: 220 25% 10%;
+
+        --secondary: 220 18% 20%;
+        --secondary-foreground: 210 40% 98%;
+
+        --muted: 220 18% 18%;
+        --muted-foreground: 215 20% 65%;
+
+        --accent: 195 85% 45%;
+        --accent-foreground: 210 40% 98%;
+
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+
+        --border: 220 18% 22%;
+        --input: 220 18% 22%;
+        --ring: 195 100% 50%;
+
+        --radius: 0.75rem;
+
+        --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(235 85% 60%));
+        --gradient-hero: linear-gradient(180deg, hsl(220 25% 10%), hsl(220 22% 13%));
+        --gradient-card: linear-gradient(135deg, hsl(220 20% 14% / 0.8), hsl(220 18% 16% / 0.8));
+
+        --shadow-glow: 0 0 40px hsl(195 100% 50% / 0.15);
+        --shadow-card: 0 4px 20px hsl(0 0% 0% / 0.3);
+
+        --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        --sidebar-background: 0 0% 98%;
+
+        --sidebar-foreground: 240 5.3% 26.1%;
+
+        --sidebar-primary: 240 5.9% 10%;
+
+        --sidebar-primary-foreground: 0 0% 98%;
+
+        --sidebar-accent: 240 4.8% 95.9%;
+
+        --sidebar-accent-foreground: 240 5.9% 10%;
+
+        --sidebar-border: 220 13% 91%;
+
+        --sidebar-ring: 217.2 91.2% 59.8%;
+    }
+}
+
+@layer base {
+    * {
+        border-color: hsl(var(--border));
+    }
+
+    body {
+        background-color: hsl(var(--background));
+        color: hsl(var(--foreground));
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@layer utilities {
+    .gradient-primary {
+        background: var(--gradient-primary);
+    }
+
+    .gradient-text {
+        background: var(--gradient-primary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .shadow-glow {
+        box-shadow: var(--shadow-glow);
+    }
+
+    .shadow-card {
+        box-shadow: var(--shadow-card);
+    }
+}
+
+/* Button variant classes used by UI button component (map to CSS variables) */
+@layer components {
+    .btn-default {
+        background-color: hsl(var(--primary));
+        color: hsl(var(--primary-foreground));
+    }
+    .btn-default:hover {
+        background-color: hsl(var(--primary) / 0.9);
+    }
+
+    .btn-secondary {
+        background-color: hsl(var(--secondary));
+        color: hsl(var(--secondary-foreground));
+    }
+    .btn-secondary:hover {
+        background-color: hsl(var(--secondary) / 0.8);
+    }
+
+    .btn-destructive {
+        background-color: hsl(var(--destructive));
+        color: hsl(var(--destructive-foreground));
+    }
+    .btn-destructive:hover {
+        background-color: hsl(var(--destructive) / 0.9);
+    }
+
+    .btn-outline {
+        border: 1px solid hsl(var(--input));
+        background-color: hsl(var(--background));
+    }
+    .btn-outline:hover {
+        background-color: hsl(var(--accent));
+        color: hsl(var(--accent-foreground));
+    }
+
+    .btn-ghost:hover {
+        background-color: hsl(var(--accent));
+        color: hsl(var(--accent-foreground));
+    }
+
+    .btn-link {
+        color: hsl(var(--primary));
+        text-underline-offset: 4px;
+    }
+    .btn-link:hover {
+        text-decoration: underline;
+    }
 }
