@@ -18,12 +18,9 @@ class ExperiencesTable
                     ->searchable(),
                 TextColumn::make('company')
                     ->searchable(),
-                TextColumn::make('start_date')
-                    ->date()
-                    ->sortable(),
-                TextColumn::make('end_date')
-                    ->date()
-                    ->sortable(),
+                TextColumn::make('period')
+                    ->label('Work Period')
+                    ->sortable(false),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

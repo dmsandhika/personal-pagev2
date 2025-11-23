@@ -15,8 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('company');
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
+            $table->string('start_month');
+            $table->string('start_year');
+            $table->string('end_month')->nullable();
+            $table->string('end_year')->nullable();
+            $table->boolean('is_current')->default(false);
             $table->text('description')->nullable();
             $table->text('logo')->nullable();
             $table->timestamps();
