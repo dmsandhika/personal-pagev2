@@ -26,10 +26,10 @@ const Hero = () => {
                     <div className="mb-12 flex flex-wrap justify-center gap-4">
                         <Button size="lg" className="gap-2">
                             <Mail className="h-4 w-4" />
-                            Get In Touch
+                            <a href="#contact">Get In Touch</a>
                         </Button>
                         <Button size="lg" variant="secondary" asChild>
-                            <a href="#projects">View Projects</a>
+                            <a href="#real-projects">View Projects</a>
                         </Button>
                     </div>
 
