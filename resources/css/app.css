@@ -101,6 +101,11 @@
     .shadow-card {
         box-shadow: var(--shadow-card);
     }
+
+    /* Hover shadow states */
+    .hover\:shadow-glow:hover {
+        box-shadow: var(--shadow-glow);
+    }
 }
 
 /* Button variant classes used by UI button component (map to CSS variables) */
