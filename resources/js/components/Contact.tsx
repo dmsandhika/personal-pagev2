@@ -1,9 +1,40 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { toast } from '@/hooks/use-toast';
+import { useForm } from '@inertiajs/react';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import { FormEvent } from 'react';
 
 const Contact = () => {
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+    });
+
+    const handleSubmit = (e: FormEvent) => {
+        e.preventDefault();
+
+        post('/contact', {
+            onSuccess: () => {
+                toast({
+                    title: 'Message sent!',
+                    description: 'Thank you for your message. I will get back to you soon.',
+                });
+                reset();
+            },
+            onError: () => {
+                toast({
+                    title: 'Error',
+                    description: 'Failed to send message. Please try again.',
+                    variant: 'destructive',
+                });
+            },
+        });
+    };
+
     return (
         <section id="contact" className="bg-secondary/30 py-20">
             <div className="container mx-auto px-4">
@@ -55,21 +86,51 @@ const Contact = () => {
                             </div>
                         </div>
 
-                        <form className="space-y-4">
+                        <form className="space-y-4" onSubmit={handleSubmit}>
                             <div>
-                                <Input placeholder="Your Name" className="bg-card border-border" />
+                                <Input
+                                    placeholder="Your Name"
+                                    className="bg-card border-border"
+                                    value={data.name}
+                                    onChange={(e) => setData('name', e.target.value)}
+                                    required
+                                />
+                                {errors.name && <p className="text-destructive mt-1 text-sm">{errors.name}</p>}
                             </div>
                             <div>
-                                <Input type="email" placeholder="Your Email" className="bg-card border-border" />
+                                <Input
+                                    type="email"
+                                    placeholder="Your Email"
+                                    className="bg-card border-border"
+                                    value={data.email}
+                                    onChange={(e) => setData('email', e.target.value)}
+                                    required
+                                />
+                                {errors.email && <p className="text-destructive mt-1 text-sm">{errors.email}</p>}
                             </div>
                             <div>
-                                <Input placeholder="Subject" className="bg-card border-border" />
+                                <Input
+                                    placeholder="Subject"
+                                    className="bg-card border-border"
+                                    value={data.subject}
+                                    onChange={(e) => setData('subject', e.target.value)}
+                                    required
+                                />
+                                {errors.subject && <p className="text-destructive mt-1 text-sm">{errors.subject}</p>}
                             </div>
                             <div>
-                                <Textarea placeholder="Your Message" rows={5} className="bg-card border-border resize-none" />
+                                <Textarea
+                                    placeholder="Your Message"
+                                    rows={5}
+                                    className="bg-card border-border resize-none"
+                                    value={data.message}
+                                    onChange={(e) => setData('message', e.target.value)}
+                                    required
+                                />
+                                {errors.message && <p className="text-destructive mt-1 text-sm">{errors.message}</p>}
                             </div>
-                            <Button className="w-full" size="lg">
-                                Send Message
+                            <Button type="submit" className="w-full" size="lg" disabled={processing}>
+                                {processing ? 'Sending...' : 'Send Message'}
                             </Button>
                         </form>
                     </div>
