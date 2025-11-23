@@ -16,8 +16,6 @@ class SkillsTable
             ->columns([
                 TextColumn::make('name')
                     ->searchable(),
-                TextColumn::make('proficiency_level')
-                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()

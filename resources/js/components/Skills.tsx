@@ -1,22 +1,7 @@
-import DefaultImage from '@/assets/default.jpg';
+import { usePage } from '@inertiajs/react';
 
 const Skills = () => {
-    const skills = [
-        'React',
-        'Next.js',
-        'TypeScript',
-        'JavaScript',
-        'Node.js',
-        'Tailwind CSS',
-        'Docker',
-        'Git',
-        'MongoDB',
-        'PostgreSQL',
-        'Express',
-        'GraphQL',
-        'AWS',
-        'Vercel',
-    ];
+    const { skills } = usePage().props;
 
     return (
         <section id="skills" className="bg-background py-20">
@@ -31,12 +16,12 @@ const Skills = () => {
                         {[...skills, ...skills].map((skill, i) => (
                             <div key={i} className="flex min-w-[120px] flex-col items-center justify-center transition-all hover:-translate-y-1">
                                 <img
-                                    src={DefaultImage}
-                                    alt={skill}
+                                    src={`/storage/${skill.logo}`}
+                                    alt={skill.name}
                                     className="h-10 w-10 rounded-md object-cover opacity-80 transition hover:opacity-100"
                                 />
 
-                                <span className="text-muted-foreground mt-2 text-center text-sm">{skill}</span>
+                                <span className="text-muted-foreground mt-2 text-center text-sm">{skill.name}</span>
                             </div>
                         ))}
                     </div>

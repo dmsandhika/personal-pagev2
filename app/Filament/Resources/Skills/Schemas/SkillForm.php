@@ -16,17 +16,10 @@ class SkillForm
             ->components([
                 TextInput::make('name')
                     ->required(),
-                Select::make('proficiency_level')
-                    ->options([
-                        'beginner' => 'Beginner',
-                        'intermediate' => 'Intermediate',
-                        'advanced' => 'Advanced',
-                        'expert' => 'Expert',
-                    ])
-                    ->required(),
                 FileUpload::make('logo')
                     ->image()
-                    ->directory('skill-logos') 
+                    ->directory('skill-logos')
+                    ->disk('public')
                     ->columnSpanFull(),
             ]);
     }
