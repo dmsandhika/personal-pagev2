@@ -21,7 +21,6 @@ class PortfolioForm
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->image()
-                    ->disk('public')
                     ->directory('portfolio-images')
                     ->columnSpanFull(),
                 TextInput::make('url_demo')

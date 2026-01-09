@@ -19,7 +19,6 @@ class SkillForm
                 FileUpload::make('logo')
                     ->image()
                     ->directory('skill-logos')
-                    ->disk('public')
                     ->columnSpanFull(),
             ]);
     }

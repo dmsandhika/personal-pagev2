@@ -19,7 +19,7 @@ const Experience = () => {
                                     <div className="mb-4 flex items-start gap-4">
                                         <div className="bg-primary/10 flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg p-3">
                                             {exp.logo ? (
-                                                <img src={`/storage/${exp.logo}`} alt={exp.company} className="h-10 w-10 object-contain" />
+                                                <img src={`/files/${exp.logo}`} alt={exp.company} className="h-10 w-10 object-contain" />
                                             ) : (
                                                 <Briefcase className="text-primary h-7 w-7" />
                                             )}

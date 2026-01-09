@@ -74,7 +74,6 @@ class ExperienceForm
                 FileUpload::make('logo')
                     ->image()
                     ->directory('experience-logos')
-                    ->disk('public')
                     ->columnSpanFull(),
             ]);
     }

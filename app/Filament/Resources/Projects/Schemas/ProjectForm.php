@@ -27,7 +27,6 @@ class ProjectForm
                     ->required(),
                 FileUpload::make('image')
                     ->image()
-                    ->disk('public')
                     ->directory('project-images')
                     ->columnSpanFull(),
                 TextInput::make('url')

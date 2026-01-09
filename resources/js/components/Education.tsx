@@ -21,7 +21,7 @@ const Education = () => {
                                     <div className="mb-4 flex items-start gap-4">
                                         <div className="bg-primary/10 flex h-14 w-14 items-center justify-center overflow-hidden rounded-lg p-3">
                                             {edu.logo ? (
-                                                <img src={`/storage/${edu.logo}`} alt={edu.institution} className="h-10 w-10 object-contain" />
+                                                <img src={`/files/${edu.logo}`} alt={edu.institution} className="h-10 w-10 object-contain" />
                                             ) : (
                                                 <GraduationCap className="text-primary h-7 w-7" />
                                             )}

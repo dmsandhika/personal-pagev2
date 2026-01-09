@@ -16,7 +16,7 @@ const Skills = () => {
                         {[...skills, ...skills].map((skill, i) => (
                             <div key={i} className="flex min-w-[120px] flex-col items-center justify-center transition-all hover:-translate-y-1">
                                 <img
-                                    src={`/storage/${skill.logo}`}
+                                    src={`/files/${skill.logo}`}
                                     alt={skill.name}
                                     className="h-10 w-10 rounded-md object-cover opacity-80 transition hover:opacity-100"
                                 />

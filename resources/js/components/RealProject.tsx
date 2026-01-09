@@ -27,7 +27,7 @@ const RealProjects = () => {
                             >
                                 <div className="relative h-48 overflow-hidden">
                                     <img
-                                        src={`/storage/${project.image}`}
+                                        src={`/files/${project.image}`}
                                         alt={project.title}
                                         className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
                                     />

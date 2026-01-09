@@ -33,8 +33,7 @@ class EducationForm
                 TextInput::make('description'),
                 FileUpload::make('logo')
                     ->image()
-                    ->directory('experience-logos')
-                    ->disk('public')
+                    ->directory('education-logos')
                     ->columnSpanFull(),
             ]);
     }
