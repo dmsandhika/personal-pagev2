@@ -2,6 +2,7 @@
 
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GitController;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
@@ -16,3 +17,5 @@ Route::get('/files/{path}', function ($path) {
   }
   return response()->file(Storage::path($path));
 })->where('path', '.*')->name('files.show');
+
+Route::get('/api/gitlab-contributions', [GitController::class, 'gitlabContributions']);
