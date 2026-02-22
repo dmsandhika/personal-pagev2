@@ -5,10 +5,12 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -47,13 +49,10 @@ class User extends Authenticatable
         ];
     }
 
-    public function canAccessFilament(): bool
+    public function canAccessPanel(Panel $panel): bool
     {
-        Log::error('CAN ACCESS FILAMENT DIPANGGIL', [
-            'user_id' => $this->id,
-            'email' => $this->email,
-        ]);
-
+        // Return true agar semua user bisa login, 
+        // atau buat kondisi spesifik, contoh: return $this->email === 'admin@email.com';
         return true;
     }
 }
