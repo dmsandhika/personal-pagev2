@@ -35,8 +35,13 @@ class PortfolioForm
                     ->preload()
                     ->searchable()
                     ->columnSpanFull(),
-
-
+                Select::make('status')
+                    ->options([
+                        'Done' => 'Done',
+                        'In Progress' => 'In Progress',
+                    ])
+                    ->default('Done')
+                    ->required(),
             ]);
     }
 }

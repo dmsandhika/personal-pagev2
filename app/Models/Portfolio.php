@@ -13,6 +13,7 @@ class Portfolio extends Model
         'url_demo',
         'url_github',
         'skill_ids',
+        'status',
     ];
     protected $casts = [
         'skill_ids' => 'array',
